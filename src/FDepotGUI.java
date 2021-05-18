@@ -42,6 +42,9 @@ public class FDepotGUI extends JComponent implements Runnable {
         fd = new FDepotGUI();
         content.add(fd, BorderLayout.CENTER);
 
+        JTabbedPane tp = new JTabbedPane();
+        content.add(tp, BorderLayout.CENTER);
+
         ImageIcon prgIcon = new ImageIcon("prgico.png");
         mainFrame.setIconImage(prgIcon.getImage());
 
@@ -50,6 +53,7 @@ public class FDepotGUI extends JComponent implements Runnable {
         ImageIcon direcImg = new ImageIcon("folder.png");
         ImageIcon enterImg = new ImageIcon("enter.png");
 
+
         snagDir = new HoverButton(direcImg, schmlue, new Color(0, 103, 232));
         snagDir.setFocusPainted(false);
         dirGet = new JFileChooser();
@@ -57,31 +61,35 @@ public class FDepotGUI extends JComponent implements Runnable {
         submitExt.setFocusPainted(false);
         leave = new HoverButton(" ", new Color(193, 42, 42), new Color(173, 22, 22));
 
+
+        JPanel sortTab = new JPanel(new BorderLayout());
+        tp.addTab("Sort", sortTab);
+
         JPanel execPanel = new JPanel(new GridLayout(2, 0));
         JPanel nwPanel = new JPanel(new GridLayout(4, 1));
         execPanel.add(nwPanel);
         JPanel spanel = new JPanel(new BorderLayout());
-        content.add(spanel, BorderLayout.SOUTH);
-        content.add(snagDir, BorderLayout.NORTH);
+        sortTab.add(spanel, BorderLayout.SOUTH);
+        spanel.add(snagDir, BorderLayout.NORTH);
         messageLabel = new JLabel("", SwingConstants.CENTER);
         messageLabel.setBackground(schmlue);
         messageLabel.setOpaque(true);
-        spanel.add(messageLabel, BorderLayout.NORTH);
+        sortTab.add(messageLabel, BorderLayout.NORTH);
         destDirect = new JLabel();
-        content.add(destDirect, BorderLayout.WEST);
+        sortTab.add(destDirect, BorderLayout.WEST);
         destDirect.setBackground(new Color(3, 152, 252));
         destDirect.setOpaque(true);
 
         ImageIcon sortImg = new ImageIcon("paper.png");
 
         sort = new HoverButton(sortImg, new Color(3, 181, 252), new Color(0, 161, 232));
-        content.add(sort, BorderLayout.CENTER);
+        sortTab.add(sort, BorderLayout.CENTER);
         sort.setFocusPainted(false);
         spanel.add(leave, BorderLayout.SOUTH);
         leave.setFocusPainted(false);
 
         JPanel choosePanel = new JPanel(new GridLayout(2, 0));
-        content.add(choosePanel, BorderLayout.EAST);
+        sortTab.add(choosePanel, BorderLayout.EAST);
         JPanel nePanel = new JPanel(new GridLayout(2,0));
         choosePanel.add(nePanel);
         enterExt = new JTextField(10);
