@@ -45,6 +45,7 @@ public class FDepotGUI extends JComponent implements Runnable {
         JTabbedPane tp = new JTabbedPane();
         content.add(tp, BorderLayout.CENTER);
 
+        //Begin sort functionality//
         ImageIcon prgIcon = new ImageIcon("prgico.png");
         mainFrame.setIconImage(prgIcon.getImage());
 
@@ -115,6 +116,14 @@ public class FDepotGUI extends JComponent implements Runnable {
         leave.setBorder(BorderFactory.createEmptyBorder());
         enterExt.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
         listLabel.setBorder(BorderFactory.createStrokeBorder(new BasicStroke(2.0f)));
+        //End sort functionality//
+
+        //Begin merge functionality//
+        JPanel mergeTab = new JPanel();
+        tp.addTab("Merge", mergeTab);
+
+        //End merge functionality//
+
 
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -195,7 +204,7 @@ public class FDepotGUI extends JComponent implements Runnable {
             Process d = Runtime.getRuntime().exec("./fdepotx " + cmdArguments.toString());
             System.out.println("Process :: " + d);
         } catch (IOException ioe) {
-            messageLabel.setText(">.. -ERR: C EXECUTABLE MISPLACED. OUTCOME: YOU'RE FUCKING STUPID.");
+            messageLabel.setText("C executable misplaced!");
         }
     }
 }
